@@ -105,40 +105,40 @@ const updateDynamicParts = (page, onNavigate) => {
     const imageSrc = pizzaData?.image ? pizzaData.image : './img/empty-cart.png';
 
     return `
-    <div class="flex items-center justify-between w-full py-8 border-t border-[#f6f6f6]">
+    <div class="cart-item flex flex-col lg:flex-row lg:items-center justify-between w-full py-6 lg:py-8 border-t border-[#f6f6f6]">
       
-      <!-- Левая часть: крупное фото и текст -->
-      <div class="flex items-center gap-6 flex-1">
-        <img src="${imageSrc}" class="w-24 h-24 object-contain flex-shrink-0" alt="${item.name}">
+      <!-- Левая часть: фото и текст -->
+      <div class="flex items-center gap-4 lg:gap-6 mb-4 lg:mb-0 flex-1">
+        <img src="${imageSrc}" class="w-16 h-16 lg:w-24 lg:h-24 object-contain flex-shrink-0" alt="${item.name}">
         <div class="flex flex-col">
-          <h3 class="font-bold text-2xl tracking-tight">${item.name}</h3>
-          <p class="text-[#8d8d8d] text-lg">
+          <h3 class="font-bold text-lg lg:text-2xl tracking-tight">${item.name}</h3>
+          <p class="text-[#8d8d8d] text-sm lg:text-lg">
             ${item.type === 'thin' ? 'тонкое' : 'традиционное'} тесто, ${item.size} см.
           </p>
         </div>
       </div>
 
       <!-- Правая часть: Управление -->
-      <div class="flex items-center gap-20">
+      <div class="flex items-center justify-between lg:justify-end gap-4 lg:gap-8 xl:gap-20 w-full lg:w-auto">
         
-        <!-- Кнопки +/- (Увеличенные) -->
-        <div class="flex items-center gap-3">
-          <button data-idx="${idx}" data-action="minus" class="w-9 h-9 rounded-full border-2 border-[#fe5f00] text-[#fe5f00] font-bold hover:bg-[#fe5f00] hover:text-white transition flex items-center justify-center text-xl">
+        <!-- Кнопки +/- -->
+        <div class="flex items-center gap-2 lg:gap-3">
+          <button data-idx="${idx}" data-action="minus" class="w-7 h-7 lg:w-9 lg:h-9 rounded-full border-2 border-[#fe5f00] text-[#fe5f00] font-bold hover:bg-[#fe5f00] hover:text-white transition flex items-center justify-center text-base lg:text-xl">
             -
           </button>
-          <b class="text-2xl w-8 text-center">${item.qty}</b>
-          <button data-idx="${idx}" data-action="plus" class="w-9 h-9 rounded-full border-2 border-[#fe5f00] text-[#fe5f00] font-bold hover:bg-[#fe5f00] hover:text-white transition flex items-center justify-center text-xl">
+          <b class="text-lg lg:text-2xl w-6 lg:w-8 text-center">${item.qty}</b>
+          <button data-idx="${idx}" data-action="plus" class="w-7 h-7 lg:w-9 lg:h-9 rounded-full border-2 border-[#fe5f00] text-[#fe5f00] font-bold hover:bg-[#fe5f00] hover:text-white transition flex items-center justify-center text-base lg:text-xl">
             +
           </button>
         </div>
 
-        <!-- Цена (Увеличенная) -->
-        <div class="w-28 text-center">
-          <b class="text-2xl whitespace-nowrap">${item.price * item.qty} ₽</b>
+        <!-- Цена -->
+        <div class="w-20 lg:w-28 text-center ml-auto">
+        <b class="text-lg lg:text-2xl whitespace-nowrap">${item.price * item.qty} ₽</b>
         </div>
 
-        <!-- Кнопка удалить (Увеличенная) -->
-        <button data-idx="${idx}" data-action="remove" class="w-9 h-9 rounded-full border-2 border-[#e2e2e2] text-[#d3d3d3] hover:border-[#282828] hover:text-[#282828] transition flex items-center justify-center text-xl">
+        <!-- Кнопка удалить -->
+        <button data-idx="${idx}" data-action="remove" class="w-7 h-7 lg:w-9 lg:h-9 rounded-full border-2 border-[#e2e2e2] text-[#d3d3d3] hover:border-[#282828] hover:text-[#282828] transition flex items-center justify-center text-base lg:text-xl">
           ×
         </button>
       </div>
@@ -631,11 +631,11 @@ showMainPage();
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash === '#cart') {
-        navigate('cart');
-    } else {
-        showMainPage();
-    }
+  if (window.location.hash === '#cart') {
+    navigate('cart');
+  } else {
+    showMainPage();
+  }
 });
 
 
