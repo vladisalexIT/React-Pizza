@@ -17,7 +17,7 @@ const saveCart = (cart) => localStorage.setItem('cart', JSON.stringify(cart));
 
 const createCartPage = (onNavigate) => {
   const page = document.createElement('div');
-  page.className = 'cart-page min-h-screen flex flex-col items-center bg-white py-10';
+  page.className = 'cart-page min-h-screen flex flex-col items-center bg-white py-0 lg:py-10';
 
   const cart = getCart();
 
@@ -108,10 +108,10 @@ const updateDynamicParts = (page, onNavigate) => {
     <div class="cart-item flex flex-col lg:flex-row lg:items-center justify-between w-full py-6 lg:py-8 border-t border-[#f6f6f6]">
       
       <!-- Левая часть: фото и текст -->
-      <div class="flex items-center gap-4 lg:gap-6 mb-4 lg:mb-0 flex-1">
-        <img src="${imageSrc}" class="w-16 h-16 lg:w-24 lg:h-24 object-contain flex-shrink-0" alt="${item.name}">
+      <div class="flex items-center gap-3 lg:gap-6 mb-4 lg:mb-0 flex-1">
+        <img src="${imageSrc}" class="w-20 h-20 lg:w-24 lg:h-24 object-contain flex-shrink-0" alt="${item.name}">
         <div class="flex flex-col">
-          <h3 class="font-bold text-lg lg:text-2xl tracking-tight">${item.name}</h3>
+          <h3 class="font-bold text-xl lg:text-2xl tracking-tight">${item.name}</h3>
           <p class="text-[#8d8d8d] text-sm lg:text-lg">
             ${item.type === 'thin' ? 'тонкое' : 'традиционное'} тесто, ${item.size} см.
           </p>
@@ -119,7 +119,7 @@ const updateDynamicParts = (page, onNavigate) => {
       </div>
 
       <!-- Правая часть: Управление -->
-      <div class="flex items-center justify-between lg:justify-end gap-4 lg:gap-8 xl:gap-20 w-full lg:w-auto">
+      <div class="flex items-center justify-between lg:justify-end gap-3 lg:gap-8 xl:gap-20 w-full lg:w-auto">
         
         <!-- Кнопки +/- -->
         <div class="flex items-center gap-2 lg:gap-3">
@@ -134,7 +134,7 @@ const updateDynamicParts = (page, onNavigate) => {
 
         <!-- Цена -->
         <div class="w-20 lg:w-28 text-center ml-auto">
-        <b class="text-lg lg:text-2xl whitespace-nowrap">${item.price * item.qty} ₽</b>
+          <b class="text-lg lg:text-2xl whitespace-nowrap">${item.price * item.qty} ₽</b>
         </div>
 
         <!-- Кнопка удалить -->
@@ -144,7 +144,7 @@ const updateDynamicParts = (page, onNavigate) => {
       </div>
 
     </div>`;
-  }).join('');
+  }).join('') + '<div class="pb-4"></div>';
 };
 
 const setupListeners = (page, onNavigate) => {
