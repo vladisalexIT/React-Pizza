@@ -23,7 +23,7 @@ const renderEmptyCart = (page, onNavigate) => {
     <div class="max-w-[800px] mx-auto flex flex-col items-center text-center">
       <h1 class="text-4xl font-black mb-4">Корзина пустая 😕</h1>
       <p class="text-[#777] text-lg mb-10">Вероятнее всего, вы не заказывали ещё пиццу.<br>Для того, чтобы заказать пиццу, перейди на главную страницу.</p>
-      <img src="../img/empty-cart.png" alt="Empty" class="w-[300px] mb-10">
+      <img src="./img/empty-cart.png" alt="Empty" class="w-[300px] mb-10">
       <a href="/" id="backToCatalog" class="bg-[#282828] text-white px-8 py-3 rounded-full font-bold">Вернуться назад</a>
     </div>`;
 
@@ -41,7 +41,7 @@ const renderCartLayout = (page, cart, onNavigate) => {
       <div class="flex items-center justify-between mb-8">
         <div class="flex items-center gap-2 sm:gap-4">
           <button id="backToCatalog" class="w-10 h-10 bg-[#f9f9f9] rounded-full flex items-center justify-center hover:bg-[#fe5f1e]/5 transition">
-            <img src="../img/cart-black.svg" class="w-5 h-5">
+            <img src="./img/cart-black.svg" class="w-5 h-5">
           </button>
           <h1 class="text-3xl sm:text-4xl font-black">Корзина</h1>
         </div>
