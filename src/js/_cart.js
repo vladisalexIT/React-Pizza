@@ -23,7 +23,7 @@ const renderEmptyCart = (page, onNavigate) => {
     <div class="max-w-[800px] mx-auto flex flex-col items-center text-center">
       <h1 class="text-4xl font-black mb-4">Корзина пустая 😕</h1>
       <p class="text-[#777] text-lg mb-10">Вероятнее всего, вы не заказывали ещё пиццу.<br>Для того, чтобы заказать пиццу, перейди на главную страницу.</p>
-      <img src="./img/empty-cart.png" alt="Empty" class="w-[300px] mb-10">
+      <img src="/img/empty-cart.png" alt="Empty" class="w-[300px] mb-10">
       <a href="/" id="backToCatalog" class="bg-[#282828] text-white px-8 py-3 rounded-full font-bold">Вернуться назад</a>
     </div>`;
 
@@ -41,7 +41,7 @@ const renderCartLayout = (page, cart, onNavigate) => {
       <div class="flex items-center justify-between mb-8">
         <div class="flex items-center gap-2 sm:gap-4">
           <button id="backToCatalog" class="w-10 h-10 bg-[#f9f9f9] rounded-full flex items-center justify-center hover:bg-[#fe5f1e]/5 transition">
-            <img src="./img/cart-black.svg" class="w-5 h-5">
+            <img src="/img/cart-black.svg" class="w-5 h-5">
           </button>
           <h1 class="text-3xl sm:text-4xl font-black">Корзина</h1>
         </div>
@@ -52,7 +52,7 @@ const renderCartLayout = (page, cart, onNavigate) => {
 
       <div id="cartItemsList" class="flex-grow"></div>
 
-      <div class="mt-10"> 
+      <div> 
         <div class="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-center mt-8">
           <p class="text-xl">Всего пицц: <b id="totalQty"></b></p>
           <p class="text-xl">Сумма заказа: <b class="text-[#fe5f00]" id="totalPrice"></b></p>
@@ -72,8 +72,6 @@ const renderCartLayout = (page, cart, onNavigate) => {
 
 // Обновление списка товаров и цифр
 const updateDynamicParts = (page, onNavigate) => {
-  page.querySelectorAll('img[src*="img/"]').forEach(img => img.remove());
-
   const cart = getCart();
   if (cart.length === 0) {
     renderEmptyCart(page, onNavigate);
@@ -92,35 +90,50 @@ const updateDynamicParts = (page, onNavigate) => {
 
   listContainer.innerHTML = cart.map((item, idx) => {
     const pizzaData = pizzas.find(p => p.id === item.id);
+    const imageSrc = pizzaData?.image?.replace(/^\/+/, '')
+      ? `/${pizzaData.image.replace(/^\/+/, '')}`
+      : '/img/empty-cart.png';
+
     return `
-<div class="cart-item flex items-center justify-between py-6 sm:py-8 border-t border-[#f6f6f6] lg:flex-row flex-col lg:gap-6 gap-4">
-  <div class="flex items-center justify-between lg:justify-start lg:flex-1 gap-3 sm:gap-4 lg:gap-6 w-full">
-    <img src="${pizzaData?.image}" class="w-20 h-20 sm:w-24 lg:w-28 lg:h-28 object-contain flex-shrink-0">
-    <div class="flex-1 min-w-0">
-      <h3 class="font-bold text-lg sm:text-xl lg:text-2xl leading-tight truncate">${item.name}</h3>
-      <p class="text-[#8d8d8d] text-xs sm:text-sm lg:text-base leading-tight">${item.type === 'thin' ? 'тонкое' : 'традиционное'} тесто, ${item.size} см.</p>
-    </div>
-  </div>
-  
-  <div class="flex items-center justify-between lg:justify-end lg:gap-6 gap-3 sm:gap-4 w-full lg:w-auto lg:flex-shrink-0">
-    <div class="flex items-center gap-1.5 sm:gap-2 lg:gap-4">
-      <button data-idx="${idx}" data-action="minus" class="w-9 h-9 sm:w-10 lg:w-10 lg:h-10 rounded-full border-2 border-[#fe5f00] text-[#fe5f00] font-bold hover:bg-[#fe5f00] hover:text-white transition flex items-center justify-center flex-shrink-0">
-        -
-      </button>
-      <b class="text-lg sm:text-xl lg:text-2xl w-6 sm:w-8 lg:w-8 text-center flex-shrink-0">${item.qty}</b>
-      <button data-idx="${idx}" data-action="plus" class="w-9 h-9 sm:w-10 lg:w-10 lg:h-10 rounded-full border-2 border-[#fe5f00] text-[#fe5f00] font-bold hover:bg-[#fe5f00] hover:text-white transition flex items-center justify-center flex-shrink-0">
-        +
-      </button>
-    </div>
-    
-    <div class="flex items-center gap-3 sm:gap-4 lg:gap-6">
-      <b class="text-lg sm:text-xl lg:text-2xl min-w-[70px] sm:min-w-[80px] lg:min-w-[100px] text-right flex-shrink-0">${item.price * item.qty} ₽</b>
-      <button data-idx="${idx}" data-action="remove" class="w-9 h-9 sm:w-10 lg:w-10 lg:h-10 rounded-full border-2 border-[#e2e2e2] text-[#d3d3d3] hover:border-[#282828] hover:text-[#282828] transition flex items-center justify-center flex-shrink-0">
-        ×
-      </button>
-    </div>
-  </div>
-</div>`;
+    <div class="flex items-center justify-between w-full py-8 border-t border-[#f6f6f6]">
+      
+      <!-- Левая часть: крупное фото и текст -->
+      <div class="flex items-center gap-6 flex-1">
+        <img src="${imageSrc}" class="w-24 h-24 object-contain flex-shrink-0" alt="${item.name}">
+        <div class="flex flex-col">
+          <h3 class="font-bold text-2xl tracking-tight">${item.name}</h3>
+          <p class="text-[#8d8d8d] text-lg">
+            ${item.type === 'thin' ? 'тонкое' : 'традиционное'} тесто, ${item.size} см.
+          </p>
+        </div>
+      </div>
+
+      <!-- Правая часть: Управление -->
+      <div class="flex items-center gap-20">
+        
+        <!-- Кнопки +/- (Увеличенные) -->
+        <div class="flex items-center gap-3">
+          <button data-idx="${idx}" data-action="minus" class="w-9 h-9 rounded-full border-2 border-[#fe5f00] text-[#fe5f00] font-bold hover:bg-[#fe5f00] hover:text-white transition flex items-center justify-center text-xl">
+            -
+          </button>
+          <b class="text-2xl w-8 text-center">${item.qty}</b>
+          <button data-idx="${idx}" data-action="plus" class="w-9 h-9 rounded-full border-2 border-[#fe5f00] text-[#fe5f00] font-bold hover:bg-[#fe5f00] hover:text-white transition flex items-center justify-center text-xl">
+            +
+          </button>
+        </div>
+
+        <!-- Цена (Увеличенная) -->
+        <div class="w-28 text-center">
+          <b class="text-2xl whitespace-nowrap">${item.price * item.qty} ₽</b>
+        </div>
+
+        <!-- Кнопка удалить (Увеличенная) -->
+        <button data-idx="${idx}" data-action="remove" class="w-9 h-9 rounded-full border-2 border-[#e2e2e2] text-[#d3d3d3] hover:border-[#282828] hover:text-[#282828] transition flex items-center justify-center text-xl">
+          ×
+        </button>
+      </div>
+
+    </div>`;
   }).join('');
 };
 
