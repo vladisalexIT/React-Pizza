@@ -4,7 +4,7 @@ export const pizzas = [
         name: "Чизбургер-пицца",
         price: 395,
         category: "Мясные",
-        image: "/img/pizza-data/1.jpg",
+        image: "./img/pizza-data/1.jpg",
         description: "Говядина, бекон, маринованные огурчики, томаты, красный лук, соус бургерный и сыр моцарелла"
     },
     {
@@ -12,7 +12,7 @@ export const pizzas = [
         name: "Сырная",
         price: 450,
         category: "Вегетарианская",
-        image: "/img/pizza-data/2.jpg",
+        image: "./img/pizza-data/2.jpg",
         description: "Микс сыров (моцарелла, чеддер, пармезан и сливочный сыр), нежный сливочный соус и ароматные специи"
     },
     {
@@ -20,7 +20,7 @@ export const pizzas = [
         name: "Креветки по-азиатски",
         price: 290,
         category: "Гриль",
-        image: "/img/pizza-data/3.jpg",
+        image: "./img/pizza-data/3.jpg",
         description: "Креветки, сладко-острый азиатский соус, кунжут, зеленый лук, болгарский перец и моцарелла"
     },
     {
@@ -28,7 +28,7 @@ export const pizzas = [
         name: "Сырный цыпленок",
         price: 385,
         category: "Мясные",
-        image: "/img/pizza-data/4.jpg",
+        image: "./img/pizza-data/4.jpg",
         description: "Куриное филе, моцарелла, сливочно-сырный соус, томаты и щепотка специй для яркого вкуса"
     },
 
@@ -37,7 +37,7 @@ export const pizzas = [
         name: "Чизбургер-пицца",
         price: 395,
         category: "Мясные",
-        image: "/img/pizza-data/5.jpg",
+        image: "./img/pizza-data/5.jpg",
         description: "Говядина, бекон, маринованные огурчики, томаты, красный лук, соус бургерный и сыр моцарелла"
     },
     {
@@ -45,7 +45,7 @@ export const pizzas = [
         name: "Сырная",
         price: 450,
         category: "Вегетарианская",
-        image: "/img/pizza-data/6.jpg",
+        image: "./img/pizza-data/6.jpg",
         description: "Микс сыров (моцарелла, чеддер, пармезан и сливочный сыр), нежный сливочный соус и ароматные специи"
     },
     {
@@ -53,7 +53,7 @@ export const pizzas = [
         name: "Креветки по-азиатски",
         price: 290,
         category: "Гриль",
-        image: "/img/pizza-data/7.jpg",
+        image: "./img/pizza-data/7.jpg",
         description: "Креветки, сладко-острый азиатский соус, кунжут, зеленый лук, болгарский перец и моцарелла"
     },
     {
@@ -61,7 +61,7 @@ export const pizzas = [
         name: "Сырный цыпленок",
         price: 385,
         category: "Мясные",
-        image: "/img/pizza-data/8.jpg",
+        image: "./img/pizza-data/8.jpg",
         description: "Куриное филе, моцарелла, сливочно-сырный соус, томаты и щепотка специй для яркого вкуса"
     }
 ]
