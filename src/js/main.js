@@ -364,6 +364,11 @@ function createPizzaCard(pizza) {
 
 const filterPizzas = (category) => {
   currentFilter = category;
+  const grid = document.querySelector('#pizza-grid');
+  if (grid) {
+    grid.querySelectorAll('img[src*="img/"]').forEach(img => img.remove());
+  }
+
   const title = document.querySelector('h2');
   if (title) title.textContent = category === 'Все' ? 'Все пиццы' : `${category} пиццы`;
 
@@ -381,7 +386,6 @@ const filterPizzas = (category) => {
   else if (currentSort === 'alphabet') filtered.sort((a, b) => a.name.localeCompare(b.name));
   else filtered.sort((a, b) => a.id - b.id);
 
-  const grid = document.querySelector('#pizza-grid');
   if (filtered.length === 0) {
     showNoPizzas(category);
   } else {
@@ -424,6 +428,7 @@ const showNoPizzas = (category) => {
 
 const showMainPage = () => {
   cart = JSON.parse(localStorage.getItem('cart') || '[]');
+
 
   root.innerHTML = '';
   root.append(createHeader(true));

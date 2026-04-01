@@ -79,6 +79,7 @@ const renderCartLayout = (page, cart, onNavigate) => {
 
 // Обновление списка товаров и цифр
 const updateDynamicParts = (page, onNavigate) => {
+  page.querySelectorAll('img[src*="img/"]').forEach(img => img.remove());
   const cart = getCart();
   if (cart.length === 0) {
     renderEmptyCart(page, onNavigate);
@@ -680,6 +681,10 @@ function createPizzaCard(pizza) {
 
 const filterPizzas = category => {
   currentFilter = category;
+  const grid = document.querySelector('#pizza-grid');
+  if (grid) {
+    grid.querySelectorAll('img[src*="img/"]').forEach(img => img.remove());
+  }
   const title = document.querySelector('h2');
   if (title) title.textContent = category === 'Все' ? 'Все пиццы' : `${category} пиццы`;
   document.querySelectorAll('.category-btn').forEach(btn => {
@@ -691,7 +696,6 @@ const filterPizzas = category => {
   });
   let filtered = category === 'Все' ? [..._data_js__WEBPACK_IMPORTED_MODULE_1__.pizzas] : _data_js__WEBPACK_IMPORTED_MODULE_1__.pizzas.filter(p => p.category === category);
   if (currentSort === 'price') filtered.sort((a, b) => a.price - b.price);else if (currentSort === 'alphabet') filtered.sort((a, b) => a.name.localeCompare(b.name));else filtered.sort((a, b) => a.id - b.id);
-  const grid = document.querySelector('#pizza-grid');
   if (filtered.length === 0) {
     showNoPizzas(category);
   } else {

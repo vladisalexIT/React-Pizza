@@ -72,6 +72,8 @@ const renderCartLayout = (page, cart, onNavigate) => {
 
 // Обновление списка товаров и цифр
 const updateDynamicParts = (page, onNavigate) => {
+  page.querySelectorAll('img[src*="img/"]').forEach(img => img.remove());
+  
   const cart = getCart();
   if (cart.length === 0) {
     renderEmptyCart(page, onNavigate);
