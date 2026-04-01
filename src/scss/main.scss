@@ -1,0 +1,26 @@
+// базовые подключения
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "vars";
+@import "mixins";
+@import 'fonts';
+@import 'typography';
+@import "settings";
+
+// подключения компонентов страницы
+@import "./components/header";
+
+
+body {
+  font-family: 'Proxima Nova', sans-serif;
+  font-weight: 400;
+}
+
+
+.page__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--vh);
+}
