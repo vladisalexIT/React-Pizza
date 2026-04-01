@@ -564,6 +564,7 @@ const addToCart = pizza => {
   } else {
     cart.push({
       ...pizza,
+      image: pizza.image,
       qty: 1
     });
   }

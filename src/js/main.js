@@ -224,7 +224,11 @@ const addToCart = (pizza) => {
   if (existingIndex > -1) {
     cart[existingIndex].qty += 1;
   } else {
-    cart.push({ ...pizza, qty: 1 });
+    cart.push({
+      ...pizza,
+      image: pizza.image,
+      qty: 1
+    });
   }
 
   saveAndRefresh();
@@ -628,3 +632,4 @@ showMainPage();
 
 
 // export { cart }
+
