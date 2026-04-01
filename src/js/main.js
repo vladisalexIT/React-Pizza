@@ -266,20 +266,18 @@ const clearCart = () => {
 
 const navigate = (pageName) => {
   if (pageName === 'main') {
-    history.pushState({ page: 'main' }, '', '/');
+    window.location.hash = ''; // Очищаем хэш
     showMainPage();
   } else if (pageName === 'cart') {
-    history.pushState({ page: 'cart' }, '', '/cart');
+    window.location.hash = 'cart'; // Устанавливаем хэш #cart
     root.innerHTML = '';
     root.append(createHeader(false));
     root.append(createCartPage(navigate));
   }
 };
 
-// Обработка кнопки "назад" браузера
-window.addEventListener('popstate', (e) => {
-  const page = e.state?.page || 'main';
-
+window.addEventListener('hashchange', () => {
+  const page = window.location.hash === '#cart' ? 'cart' : 'main';
   if (page === 'cart') {
     root.innerHTML = '';
     root.append(createHeader(false));
@@ -629,6 +627,16 @@ const showMainPage = () => {
 };
 
 showMainPage();
+
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#cart') {
+        navigate('cart');
+    } else {
+        showMainPage();
+    }
+});
 
 
 // export { cart }
