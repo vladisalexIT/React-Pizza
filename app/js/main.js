@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/js/_cart-page.js"
-/*!******************************!*\
-  !*** ./src/js/_cart-page.js ***!
-  \******************************/
+/***/ "./src/js/_cart.js"
+/*!*************************!*\
+  !*** ./src/js/_cart.js ***!
+  \*************************/
 (__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -156,17 +156,6 @@ const setupListeners = (page, onNavigate) => {
     onNavigate('main');
   };
 };
-
-
-/***/ },
-
-/***/ "./src/js/_cart.js"
-/*!*************************!*\
-  !*** ./src/js/_cart.js ***!
-  \*************************/
-(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
 
 
 /***/ },
@@ -351,7 +340,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _filters_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_filters.js */ "./src/js/_filters.js");
 /* harmony import */ var _cart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_cart.js */ "./src/js/_cart.js");
 /* harmony import */ var _render_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_render.js */ "./src/js/_render.js");
-/* harmony import */ var _cart_page_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_cart-page.js */ "./src/js/_cart-page.js");
 
 
 
@@ -431,7 +419,7 @@ const navigate = pageName => {
     }, '', '/cart');
     root.innerHTML = '';
     root.append(createHeader(false));
-    root.append((0,_cart_page_js__WEBPACK_IMPORTED_MODULE_5__.createCartPage)(navigate));
+    root.append((0,_cart_js__WEBPACK_IMPORTED_MODULE_3__.createCartPage)(navigate));
   }
 };
 
@@ -441,7 +429,7 @@ window.addEventListener('popstate', e => {
   if (page === 'cart') {
     root.innerHTML = '';
     root.append(createHeader(false));
-    root.append((0,_cart_page_js__WEBPACK_IMPORTED_MODULE_5__.createCartPage)(navigate));
+    root.append((0,_cart_js__WEBPACK_IMPORTED_MODULE_3__.createCartPage)(navigate));
   } else {
     showMainPage();
   }

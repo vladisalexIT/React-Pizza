@@ -32,7 +32,8 @@ const watcher = () => {
     port: 3000,
   });
 
-  gulp.watch(`${app.paths.base.src}/*.html`, gulp.series(htmlInclude, styles));
+  // ИЗМЕНЕНО: теперь следит и за папкой src, и за корнем (где лежит cart-page.html)
+  gulp.watch([`${app.paths.base.src}/*.html`, './*.html'], gulp.series(htmlInclude, styles));
   gulp.watch(`${app.paths.srcPartialsFolder}/**/*.html`, gulp.series(htmlInclude, styles));
   
   gulp.watch(app.paths.srcScss, styles);

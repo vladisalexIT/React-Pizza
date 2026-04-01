@@ -4,7 +4,7 @@ import './_filters.js';
 import './_cart.js';
 import './_render.js';
 import { pizzas } from './_data.js';
-import { createCartPage } from './_cart-page.js';
+import { createCartPage } from './_cart.js';
 
 const root = document.querySelector('[data-js-root]');
 
