@@ -188,7 +188,7 @@ function createHeader(showCartBtn = true) {
   const logoWrapper = el('a', 'flex items-center gap-4');
   logoWrapper.href = "#";
   logoWrapper.innerHTML = `
-        <img src="../img/logo.svg" alt="Logo" class="w-10 h-10">
+        <img src="./img/logo.svg" alt="Logo" class="w-10 h-10">
         <div>
             <h1 class="text-2xl font-black uppercase tracking-[0.01em] leading-none">React Pizza</h1>
             <p class="text-[#7b7b7b] text-base">самая вкусная пицца во вселенной</p>
@@ -198,7 +198,7 @@ function createHeader(showCartBtn = true) {
 
   if (showCartBtn) {
     const cartBtn = el('button', 'cart-btn flex-none bg-[#fe5f00] text-white px-6 py-3 rounded-full flex items-center gap-4 font-bold hover:bg-[#e25600] transition cursor-pointer');
-    cartBtn.innerHTML = `<span>0 ₽</span><div class="w-[1px] h-6 bg-white/30"></div><div class="flex items-center gap-2"><img src="../img/cart-icon.svg" class="w-4 h-4"><span>0</span></div>`;
+    cartBtn.innerHTML = `<span>0 ₽</span><div class="w-[1px] h-6 bg-white/30"></div><div class="flex items-center gap-2"><img src="./img/cart-icon.svg" class="w-4 h-4"><span>0</span></div>`;
 
     cartBtn.onclick = (e) => {
       e.preventDefault();
@@ -227,7 +227,7 @@ function createFilters() {
 
   const sort = el('div', 'relative flex items-center gap-2 cursor-pointer');
   sort.innerHTML = `
-    <img id="sortIcon" src="../img/arrow-up.svg" class="w-2 transition-transform duration-200">
+    <img id="sortIcon" src="./img/arrow-up.svg" class="w-2 transition-transform duration-200">
     <span class="font-bold text-sm">Сортировка по:</span>
     <span id="selectedSortText" class="text-[#fe5f00] border-b border-dashed border-[#fe5f00] text-sm">популярности</span>
     <div id="sortPopup" class="hidden absolute right-0 top-full mt-3 w-[132px] bg-white rounded-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.09)] overflow-hidden z-10">
